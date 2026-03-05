@@ -1,0 +1,23 @@
+# depslib dependency file v1.0
+1772661124 source:c:\users\axel\desktop\4to semestre\estructura de datos\clase\tarea 3 - aplicación de pilas\main.cpp
+	<iostream>
+	"Expresion.hpp"
+
+1772660984 source:c:\users\axel\desktop\4to semestre\estructura de datos\clase\tarea 3 - aplicación de pilas\expresion.cpp
+	"Expresion.hpp"
+
+1772661124 c:\users\axel\desktop\4to semestre\estructura de datos\clase\tarea 3 - aplicación de pilas\expresion.hpp
+	<iostream>
+	<string>
+
+1772660984 source:c:\users\axel\desktop\4to semestre\estructura de datos\tareas\tarea 3 - aplicación de pilas\expresion.cpp
+	"Expresion.hpp"
+
+1772661124 c:\users\axel\desktop\4to semestre\estructura de datos\tareas\tarea 3 - aplicación de pilas\expresion.hpp
+	<iostream>
+	<string>
+
+1772661124 source:c:\users\axel\desktop\4to semestre\estructura de datos\tareas\tarea 3 - aplicación de pilas\main.cpp
+	<iostream>
+	"Expresion.hpp"
+
