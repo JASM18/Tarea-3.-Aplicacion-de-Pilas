@@ -27,12 +27,15 @@ public:
 
     bool ObtenerValidez();
 
+    void ConversionInfAPol();
+
 private:
 
     string notInfija; // Notacion infija es del tipo A + B
     bool valido; // Para indicar si la exprecion es valida o no
     string notPolacaInversa; // Notación polaca inversa
 
+    bool ValidarExpresion();
 };
 
 #endif // EXPRESION_HPP_INCLUDED
