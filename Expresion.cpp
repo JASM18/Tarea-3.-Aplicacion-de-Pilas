@@ -6,6 +6,14 @@
 using std::cout;
 using std::endl;
 
+enum Estado {
+    INICIO_O_APERTURA,
+    ESPERANDO_OPERANDO,
+    LEYENDO_ENTERO,
+    LEYENDO_DECIMAL,
+    ESPERANDO_OPERADOR_O_CIERRE
+};
+
 //********************************
 // CONSTRUCTORES
 //********************************
@@ -123,24 +131,11 @@ bool Expresion::ValidarExpresion()
     // No sería practico validar la agrupacion, y otro recorrido diferente para validar otros detalles
     // Al mismo tiempo hay que hacer el proceso, dependiendo de si encontramos un operador, operando o simbolo de agrupación.
 
-
-    enum Estado {
-        INICIO_O_APERTURA,
-        ESPERANDO_OPERANDO,
-        LEYENDO_ENTERO,
-        LEYENDO_DECIMAL,
-        ESPERANDO_OPERADOR_O_CIERRE
-    };
-
-
     Pila<char> agrupacion;
 
     Estado actual = INICIO_O_APERTURA;
 
-
-    //"(1+2)*2"
-
-    for (int i = 0; i < this->notInfija.size() ; i++) {
+    for(int i = 0; i < this->notInfija.size() ; i++){
 
         char caracter = notInfija[i];
 
@@ -187,7 +182,7 @@ bool Expresion::ValidarExpresion()
         }else if(caracter == '(' || caracter == '[' || caracter == '{'){ // Si se lee una apertura de agrupación
 
             // No se puede abrir paréntesis después de un número o un cierre. ejemplo: "3(" o ")("
-            if (actual == LEYENDO_ENTERO || actual == LEYENDO_DECIMAL || actual == ESPERANDO_OPERADOR_O_CIERRE) {
+            if(actual == LEYENDO_ENTERO || actual == LEYENDO_DECIMAL || actual == ESPERANDO_OPERADOR_O_CIERRE){
                 return (this->valido = false);
             }
 
@@ -204,10 +199,10 @@ bool Expresion::ValidarExpresion()
 
             char tope = agrupacion.ObtenerTope();
 
-            if ((caracter == ')' && tope == '(') || (caracter == ']' && tope == '[') || (caracter == '}' && tope == '{')) {
-                agrupacion.Eliminar(); // Hacen pareja, lo sacamos
+            if((caracter == ')' && tope == '(') || (caracter == ']' && tope == '[') || (caracter == '}' && tope == '{')){
+                agrupacion.Eliminar(); // Hacen pareja, lo sacamos...
             }else{
-                return (this->valido = false); // Pareja incorrecta "(]"
+                return (this->valido = false); // Pareja invalida: "(]"
             }
 
             // Después de cerrar, obligatoriamente esperamos un operador
@@ -216,16 +211,25 @@ bool Expresion::ValidarExpresion()
         }else{
             return (this->valido = false);
         }
-
     }
 
-    // Si terminó la cadena y seguía esperando un número (Ej: "3+")
+    // Si terminó la cadena y se sigue esperando un número. Ej: "3+"
     if (actual == ESPERANDO_OPERANDO) return (this->valido = false);
 
-    // Si la pila no está vacía, faltó cerrar algún símbolo (Ej: "(3+2")
+    // Si la pila no está vacía, faltó cerrar algún símbolo. Ej: "(3+2"
     if (!agrupacion.EstaVacia()) return (this->valido = false);
 
     return (this->valido = true);
+}
+
+//********************************
+
+int Expresion::ObtenerPrioridad(char operador)
+{
+    if(operador == '^') return 3;
+    if(operador == '*' || operador == '/') return 2;
+    if(operador == '+' || operador == '-') return 1;
+    return 0; // Cualquier otra cosa (incluye las agrupaciones)
 }
 
 //********************************
@@ -235,25 +239,79 @@ void Expresion::ConversionInfAPol()
     this->notPolacaInversa = "";
     Pila<char> Lectura;
 
-    for (int i = 0; i < this->notInfija.size() ; i++) {
+    for(int i = 0; i < this->notInfija.size() ; i++){
 
         char caracter = this->notInfija[i];
 
-        if(isdigit(caracter)){
+        if(caracter == ' ') continue;
+
+        if(isdigit(caracter) || caracter == '.'){ // Si es un operando
 
             this->notPolacaInversa += caracter;
 
+            // ¿Cómo sabemos si ya terminamos de leer el número para poner el $?
+            // Si es el último caracter del arreglo, o si el SIGUIENTE caracter NO es un número/punto.
+            if(i == this->notInfija.size() - 1 || (!isdigit(this->notInfija[i+1]) && this->notInfija[i+1] != '.')){
+                this->notPolacaInversa += "$";
+            }
+
         }else if(caracter == '+' || caracter == '-' || caracter == '*' || caracter == '/' || caracter == '^'){ // Si se lee un operador
 
+            // A) Verificar si es un operador unario para inyectar un "0$"
+            bool esUnario = false;
+            if(i == 0){
+                esUnario = true;
+            }else{
+                int j = i - 1;
+                while(j >= 0 && this->notInfija[j] == ' ') j--; // Retrocede saltando espacios
+                if(j >= 0 && (this->notInfija[j] == '(' || this->notInfija[j] == '[' || this->notInfija[j] == '{')){
+                    esUnario = true;
+                }
+            }
 
+            if(esUnario && (caracter == '+' || caracter == '-')){
+                this->notPolacaInversa += "0$";
+            }
+            // B) Comparar prioridades con la pila
+            // No comparamos si el tope es un paréntesis
+            while(!Lectura.EstaVacia() && Lectura.ObtenerTope() != '(' && Lectura.ObtenerTope() != '[' && Lectura.ObtenerTope() != '{'){
 
+                char tope = Lectura.ObtenerTope();
+                int prioTope = ObtenerPrioridad(tope);
+                int prioCar = ObtenerPrioridad(caracter);
 
+                // Si es asociatividad Izquierda-Derecha (+, -, *, /): Saca si es MAYOR O IGUAL
+                if(caracter != '^' && prioTope >= prioCar){
+                    this->notPolacaInversa += tope;
+                    Lectura.Eliminar();
+                }else if(caracter == '^' && prioTope > prioCar){ // Si es asociatividad Derecha-Izquierda (^): Saca solo si es MAYOR estricto
+                    this->notPolacaInversa += tope;
+                    Lectura.Eliminar();
+                }else{
+                    break; // El nuevo operador gana
+                }
+            }
 
-
-        }else if(caracter == '(' || caracter == '[' || caracter == '{'){ // Si se lee una apertura de agrupación
             Lectura.Agregar(caracter);
+
+        }else if(caracter == '(' || caracter == '[' || caracter == '{'){
+            Lectura.Agregar(caracter);
+        }else if(caracter == ')' || caracter == ']' || caracter == '}'){ // Si es un cierre de agrupación
+            // Sacamos todo a la expresión hasta toparnos con la apertura
+            while(!Lectura.EstaVacia() && Lectura.ObtenerTope() != '(' && Lectura.ObtenerTope() != '[' && Lectura.ObtenerTope() != '{'){
+                this->notPolacaInversa += Lectura.ObtenerTope();
+                Lectura.Eliminar();
+            }
+            // Eliminamos la apertura de la pila
+            if(!Lectura.EstaVacia()){
+                Lectura.Eliminar();
+            }
         }
     }
 
-    // Al final, este método debe de modificar el atributo string notPolacaInversa
+    // Vaciando la pila
+    while(!Lectura.EstaVacia()){
+        this->notPolacaInversa += Lectura.ObtenerTope();
+        Lectura.Eliminar();
+    }
 }

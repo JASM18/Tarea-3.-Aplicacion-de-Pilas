@@ -34,6 +34,7 @@ private:
     string notPolacaInversa; // Notación polaca inversa
 
     bool ValidarExpresion();
+    int ObtenerPrioridad(char operador);
     void ConversionInfAPol();
 };
 
