@@ -27,8 +27,6 @@ public:
 
     bool ObtenerValidez();
 
-    void ConversionInfAPol();
-
 private:
 
     string notInfija; // Notacion infija es del tipo A + B
@@ -36,6 +34,7 @@ private:
     string notPolacaInversa; // Notación polaca inversa
 
     bool ValidarExpresion();
+    void ConversionInfAPol();
 };
 
 #endif // EXPRESION_HPP_INCLUDED

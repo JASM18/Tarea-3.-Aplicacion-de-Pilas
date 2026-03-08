@@ -102,24 +102,6 @@ bool Expresion::ObtenerValidez()
 }
 
 //********************************
-
-// Este método será privado al final
-void Expresion::ConversionInfAPol()
-{
-    this->notPolacaInversa = "";
-    Pila<char> Lectura;
-
-    for (int i = 0; i < this->notInfija.size() ; i++) {
-
-        char c = this->notInfija[i];
-
-
-    }
-
-    // Al final, este método debe de modificar el atributo string notPolacaInversa
-}
-
-//********************************
 // Métodos privados
 //********************************
 
@@ -143,8 +125,8 @@ bool Expresion::ValidarExpresion()
 
 
     enum Estado {
-        INICIO_O_APERTURA,           // Nivel 0: Al inicio o justo después de abrir (
-        ESPERANDO_OPERANDO,          // Nivel 1: Justo después de un operador (+, -, *, /, ^)
+        INICIO_O_APERTURA,
+        ESPERANDO_OPERANDO,
         LEYENDO_ENTERO,
         LEYENDO_DECIMAL,
         ESPERANDO_OPERADOR_O_CIERRE
@@ -154,6 +136,9 @@ bool Expresion::ValidarExpresion()
     Pila<char> agrupacion;
 
     Estado actual = INICIO_O_APERTURA;
+
+
+    //"(1+2)*2"
 
     for (int i = 0; i < this->notInfija.size() ; i++) {
 
@@ -176,7 +161,7 @@ bool Expresion::ValidarExpresion()
         }else if(caracter == '.'){ // Si lee un '.'
             // El punto es valido si ya de por si estabamos leyendo la parte entera
 
-            if(actual == LEYENDO_ENTERO){
+            if(actual == LEYENDO_ENTERO || actual == ESPERANDO_OPERANDO || actual == INICIO_O_APERTURA){
                 actual = LEYENDO_DECIMAL;
             }else{
                 return (this->valido = false);
@@ -228,12 +213,9 @@ bool Expresion::ValidarExpresion()
             // Después de cerrar, obligatoriamente esperamos un operador
             actual = ESPERANDO_OPERADOR_O_CIERRE;
 
-
         }else{
             return (this->valido = false);
         }
-
-
 
     }
 
@@ -244,4 +226,34 @@ bool Expresion::ValidarExpresion()
     if (!agrupacion.EstaVacia()) return (this->valido = false);
 
     return (this->valido = true);
+}
+
+//********************************
+
+void Expresion::ConversionInfAPol()
+{
+    this->notPolacaInversa = "";
+    Pila<char> Lectura;
+
+    for (int i = 0; i < this->notInfija.size() ; i++) {
+
+        char caracter = this->notInfija[i];
+
+        if(isdigit(caracter)){
+
+            this->notPolacaInversa += caracter;
+
+        }else if(caracter == '+' || caracter == '-' || caracter == '*' || caracter == '/' || caracter == '^'){ // Si se lee un operador
+
+
+
+
+
+
+        }else if(caracter == '(' || caracter == '[' || caracter == '{'){ // Si se lee una apertura de agrupación
+            Lectura.Agregar(caracter);
+        }
+    }
+
+    // Al final, este método debe de modificar el atributo string notPolacaInversa
 }
