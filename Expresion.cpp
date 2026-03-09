@@ -36,7 +36,7 @@ Expresion::Expresion(string textInfijo)
     if(this->valido == true){
         ConversionInfAPol(); // La deja lista para evaluar
     }else{
-        cout << "Error: La expresión " << this->notInfija << " no es valida." << endl;
+        cout << "Error: La expresi\242n " << this->notInfija << " no es v\240lida." << endl;
     }
 
     /*
@@ -46,9 +46,9 @@ Expresion::Expresion(string textInfijo)
     */
 
     if(ValidarExpresion()){
-        cout << "LA EXPRESION ES VALIDA" << endl;
+        cout << "La expresi\242n es v\240lida." << endl;
     }else{
-        cout << "LA EXPRESION NO ES VALIDA" << endl;
+        cout << "La expresi\242n no es v\240lida." << endl;
     }
 
 }
@@ -67,7 +67,7 @@ void Expresion::CapturarExpresion()
     */
 
     // CÓDIGO PARA CAPTURAR...
-
+    std::getline(std::cin, this->notInfija);
 
     // DESPUÉS DE CAPTURAR...
     this->ValidarExpresion();
@@ -75,7 +75,7 @@ void Expresion::CapturarExpresion()
     if(this->valido == true){
         ConversionInfAPol(); // La deja lista para evaluar
     }else{
-        cout << "Error: La expresión " << this->notInfija << " no es valida." << endl;
+        cout << "Error: La expresi\242n " << this->notInfija << " no es v\240lida." << endl;
     }
 }
 
@@ -83,13 +83,20 @@ void Expresion::CapturarExpresion()
 
 void Expresion::ImprimirExpresion()
 {
-    cout << "Expresión Infija: " << notInfija;
+    cout << "Expresi\242n Infija: " << notInfija;
 }
 
 //********************************
 
 void Expresion::EvaluarExpresion()
 {
+    if (this->valido == false){
+        cout << "La expresi\242n no es v\240lida." << endl;
+        return;
+    }
+
+//    for (int i = 0; i < )
+
 
 }
 
@@ -99,7 +106,7 @@ void Expresion::EvaluarExpresion()
 
 void Expresion::ImprimirPolacaInversa()
 {
-    cout << "Expresión polaca: " << notPolacaInversa;
+    cout << "Expresi\242n polaca: " << notPolacaInversa;
 }
 
 //********************************
