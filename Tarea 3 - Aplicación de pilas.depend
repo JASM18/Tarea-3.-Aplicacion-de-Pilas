@@ -10,7 +10,7 @@
 	<iostream>
 	<string>
 
-1772955098 source:c:\users\axel\desktop\4to semestre\estructura de datos\tareas\tarea 3 - aplicación de pilas\expresion.cpp
+1773074352 source:c:\users\axel\desktop\4to semestre\estructura de datos\tareas\tarea 3 - aplicación de pilas\expresion.cpp
 	<cctype>
 	"Expresion.hpp"
 	"Pila.hpp"
@@ -19,16 +19,16 @@
 	<iostream>
 	<string>
 
-1772955749 source:c:\users\axel\desktop\4to semestre\estructura de datos\tareas\tarea 3 - aplicación de pilas\main.cpp
+1773074458 source:c:\users\axel\desktop\4to semestre\estructura de datos\tareas\tarea 3 - aplicación de pilas\main.cpp
 	<iostream>
 	<cctype>
 	"Expresion.hpp"
 
-1772654551 c:\users\axel\desktop\4to semestre\estructura de datos\tareas\tarea 3 - aplicación de pilas\pila.hpp
+1773074129 c:\users\axel\desktop\4to semestre\estructura de datos\tareas\tarea 3 - aplicación de pilas\pila.hpp
 	<exception>
 	"Pila.tpp"
 
-1772654551 c:\users\axel\desktop\4to semestre\estructura de datos\tareas\tarea 3 - aplicación de pilas\pila.tpp
+1773074391 c:\users\axel\desktop\4to semestre\estructura de datos\tareas\tarea 3 - aplicación de pilas\pila.tpp
 	<iostream>
 
 1773072943 source:e:\github\pila-de-elementos-enlazados-main\tarea-3.-aplicacion-de-pilas\expresion.cpp

@@ -10,6 +10,7 @@ int main()
 
     Expresion a("(2^[4*6^{1/4}^({[(2+4)*6]^2/(8-6)}*(2-4))])+2*(8-6/2+4*2)");
 
+
     cout << "La expresi\242n es v\240lida? " << a.ObtenerValidez() << endl;
     a.ImprimirExpresion();
 
@@ -23,6 +24,8 @@ int main()
     b.CapturarExpresion();
     cout << "Imprimiendo b" << endl;
     b.ImprimirExpresion();
+
+
 
     cout << endl;
     system("Pause");
