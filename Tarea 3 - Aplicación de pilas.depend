@@ -10,16 +10,17 @@
 	<iostream>
 	<string>
 
-1773074352 source:c:\users\axel\desktop\4to semestre\estructura de datos\tareas\tarea 3 - aplicación de pilas\expresion.cpp
+1773114278 source:c:\users\axel\desktop\4to semestre\estructura de datos\tareas\tarea 3 - aplicación de pilas\expresion.cpp
 	<cctype>
+	<cmath>
 	"Expresion.hpp"
 	"Pila.hpp"
 
-1772954469 c:\users\axel\desktop\4to semestre\estructura de datos\tareas\tarea 3 - aplicación de pilas\expresion.hpp
+1773115236 c:\users\axel\desktop\4to semestre\estructura de datos\tareas\tarea 3 - aplicación de pilas\expresion.hpp
 	<iostream>
 	<string>
 
-1773074458 source:c:\users\axel\desktop\4to semestre\estructura de datos\tareas\tarea 3 - aplicación de pilas\main.cpp
+1773114497 source:c:\users\axel\desktop\4to semestre\estructura de datos\tareas\tarea 3 - aplicación de pilas\main.cpp
 	<iostream>
 	<cctype>
 	"Expresion.hpp"

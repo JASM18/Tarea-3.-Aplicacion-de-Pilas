@@ -1,4 +1,5 @@
 #include <cctype>
+#include <cmath>
 
 #include "Expresion.hpp"
 #include "Pila.hpp"
@@ -36,7 +37,7 @@ Expresion::Expresion(string textInfijo)
     if(this->valido == true){
         ConversionInfAPol(); // La deja lista para evaluar
     }else{
-        cout << "Error: La expresi\242n " << this->notInfija << " no es v\240lida." << endl;
+        throw SyntaxError();
     }
 
     /*
@@ -44,12 +45,6 @@ Expresion::Expresion(string textInfijo)
         la convierta a notación polaca inversa (la deje lista para evaluar)
     }
     */
-
-    if(ValidarExpresion()){
-        cout << "La expresi\242n es v\240lida." << endl;
-    }else{
-        cout << "La expresi\242n no es v\240lida." << endl;
-    }
 
 }
 
@@ -66,7 +61,6 @@ void Expresion::CapturarExpresion()
     }
     */
 
-    // CÓDIGO PARA CAPTURAR...
     std::getline(std::cin, this->notInfija);
 
     // DESPUÉS DE CAPTURAR...
@@ -75,7 +69,7 @@ void Expresion::CapturarExpresion()
     if(this->valido == true){
         ConversionInfAPol(); // La deja lista para evaluar
     }else{
-        cout << "Error: La expresi\242n " << this->notInfija << " no es v\240lida." << endl;
+        throw SyntaxError();
     }
 }
 
@@ -88,16 +82,84 @@ void Expresion::ImprimirExpresion()
 
 //********************************
 
-void Expresion::EvaluarExpresion()
+float Expresion::EvaluarExpresion()
 {
     if (this->valido == false){
-        cout << "La expresi\242n no es v\240lida." << endl;
-        return;
+       throw SyntaxError();
     }
 
-//    for (int i = 0; i < )
+    Pila<float> evaluacion;
+
+    string numero = "";
+    float num1, num2, resultado;
+
+    for(int i = 0 ; i < this->notPolacaInversa.size() ; ++i){
+
+        char caracter = this->notPolacaInversa[i];
+
+        if(caracter == '$'){
+
+            // El numero se convierte a flotante
+            // El flotante se mete a la pila
+
+            evaluacion.Agregar(std::stof(numero));
+            numero = "";
+
+        }else if(caracter == '+' || caracter == '-' || caracter == '*' || caracter == '/' || caracter == '^'){ // Si se lee un operador
+
+            //num1 = std::stof(numero[numero.size()-1]);
+            //num2 = stof(numero[numero.size()-1]);
+
+            num2 = evaluacion.ObtenerTope();
+            evaluacion.Eliminar();
+            num1 = evaluacion.ObtenerTope();
+            evaluacion.Eliminar();
+
+            switch (caracter){
+                case '+':
+                    resultado = num1 + num2;
+
+                break;
+
+                case '*':
+                    resultado = num1 * num2;
+
+                break;
+
+                case '-':
+                    resultado = num1 - num2;
+
+                break;
+
+                case '/':
+                    if (num2 == 0){
+                        throw MathError();
+                    }
+                    resultado = num1 / num2;
 
 
+                break;
+
+                case '^':
+                    if (num1 == 0 && num2 <= 0){
+                        throw MathError();
+                    }
+                    resultado = pow(num1, num2);
+
+                break;
+
+            }
+
+            evaluacion.Agregar(resultado);
+
+        }else{ // De a fuerzas es un número
+
+            numero = numero + caracter;
+
+        }
+    }
+
+    return resultado;
 }
 
 //********************************
@@ -114,6 +176,31 @@ void Expresion::ImprimirPolacaInversa()
 bool Expresion::ObtenerValidez()
 {
     return valido;
+}
+
+//***********************************
+// Implementación de la clase SyntaxError
+//***********************************
+
+Expresion::SyntaxError::SyntaxError() throw() {}
+
+//***********************************
+
+const char *Expresion::SyntaxError::what() const throw()
+{
+    return "Error de sintaxis.";
+}
+//***********************************
+// Implementación de la clase MathError
+//***********************************
+
+Expresion::MathError::MathError() throw() {}
+
+//***********************************
+
+const char *Expresion::MathError::what() const throw()
+{
+    return "Error de c\240lculo.";
 }
 
 //********************************
