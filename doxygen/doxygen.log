@@ -1,0 +1,22 @@
+C:/Users/Axel/Desktop/4to semestre/Estructura de Datos/Tareas/Tarea 3 - Aplicación de pilas/Pila.hpp:70: warning: Unsupported symbol '&icute;' found
+C:/Users/Axel/Desktop/4to semestre/Estructura de Datos/Tareas/Tarea 3 - Aplicación de pilas/Menu.hpp:22: warning: found documented return type for GCapturar that does not return anything
+C:/Users/Axel/Desktop/4to semestre/Estructura de Datos/Tareas/Tarea 3 - Aplicación de pilas/Menu.hpp:16: warning: found documented return type for GConstructores that does not return anything
+C:/Users/Axel/Desktop/4to semestre/Estructura de Datos/Tareas/Tarea 3 - Aplicación de pilas/Menu.hpp:43: warning: found documented return type for GEvaluar that does not return anything
+C:/Users/Axel/Desktop/4to semestre/Estructura de Datos/Tareas/Tarea 3 - Aplicación de pilas/Menu.hpp:29: warning: found documented return type for GImpInfijo that does not return anything
+C:/Users/Axel/Desktop/4to semestre/Estructura de Datos/Tareas/Tarea 3 - Aplicación de pilas/Menu.hpp:36: warning: found documented return type for GImpPolaca that does not return anything
+C:/Users/Axel/Desktop/4to semestre/Estructura de Datos/Tareas/Tarea 3 - Aplicación de pilas/Menu.hpp:50: warning: found documented return type for GInstrucciones that does not return anything
+C:/Users/Axel/Desktop/4to semestre/Estructura de Datos/Tareas/Tarea 3 - Aplicación de pilas/Menu.hpp:22: warning: found documented return type for GCapturar that does not return anything
+C:/Users/Axel/Desktop/4to semestre/Estructura de Datos/Tareas/Tarea 3 - Aplicación de pilas/Menu.hpp:16: warning: found documented return type for GConstructores that does not return anything
+C:/Users/Axel/Desktop/4to semestre/Estructura de Datos/Tareas/Tarea 3 - Aplicación de pilas/Menu.hpp:43: warning: found documented return type for GEvaluar that does not return anything
+C:/Users/Axel/Desktop/4to semestre/Estructura de Datos/Tareas/Tarea 3 - Aplicación de pilas/Menu.hpp:29: warning: found documented return type for GImpInfijo that does not return anything
+C:/Users/Axel/Desktop/4to semestre/Estructura de Datos/Tareas/Tarea 3 - Aplicación de pilas/Menu.hpp:36: warning: found documented return type for GImpPolaca that does not return anything
+C:/Users/Axel/Desktop/4to semestre/Estructura de Datos/Tareas/Tarea 3 - Aplicación de pilas/Menu.hpp:50: warning: found documented return type for GInstrucciones that does not return anything
+C:/Users/Axel/Desktop/4to semestre/Estructura de Datos/Tareas/Tarea 3 - Aplicación de pilas/Expresion.hpp:68: warning: found documented return type for Expresion::CapturarExpresion that does not return anything
+C:/Users/Axel/Desktop/4to semestre/Estructura de Datos/Tareas/Tarea 3 - Aplicación de pilas/Expresion.hpp:76: warning: found documented return type for Expresion::ImprimirExpresion that does not return anything
+C:/Users/Axel/Desktop/4to semestre/Estructura de Datos/Tareas/Tarea 3 - Aplicación de pilas/Expresion.hpp:94: warning: found documented return type for Expresion::ImprimirPolacaInversa that does not return anything
+C:/Users/Axel/Desktop/4to semestre/Estructura de Datos/Tareas/Tarea 3 - Aplicación de pilas/Pila.hpp:70: warning: Unsupported symbol '&icute;' found
+C:/Users/Axel/Desktop/4to semestre/Estructura de Datos/Tareas/Tarea 3 - Aplicación de pilas/Pila.hpp:36: warning: found documented return type for Pila::Agregar that does not return anything
+C:/Users/Axel/Desktop/4to semestre/Estructura de Datos/Tareas/Tarea 3 - Aplicación de pilas/Pila.hpp:44: warning: found documented return type for Pila::Eliminar that does not return anything
+C:/Users/Axel/Desktop/4to semestre/Estructura de Datos/Tareas/Tarea 3 - Aplicación de pilas/Pila.hpp:79: warning: found documented return type for Pila::Imprimir that does not return anything
+C:/Users/Axel/Desktop/4to semestre/Estructura de Datos/Tareas/Tarea 3 - Aplicación de pilas/Pila.hpp:70: warning: Unsupported symbol '&icute;' found
+C:/Users/Axel/Desktop/4to semestre/Estructura de Datos/Tareas/Tarea 3 - Aplicación de pilas/Pila.hpp:72: warning: found documented return type for Pila::Vaciar that does not return anything
