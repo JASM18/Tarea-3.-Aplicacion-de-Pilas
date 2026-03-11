@@ -9,6 +9,21 @@ using std::string;
 class Expresion {
 
 public:
+    /**
+     * \brief Sobrecarga del operador de inserci&oacute;n (salida).
+     * \param salida Flujo de salida.
+     * \param expresion Expresion a imprimir.
+     * \return Referencia al flujo de salida.
+     */
+    friend std::ostream & operator <<(std::ostream & salida, const Expresion &expresion);
+
+    /**
+     * \brief Sobrecarga del operador de extracci&oacute;n (entrada).
+     * \param entrada Flujo de entrada.
+     * \param expresion Expresion donde se guardar&aacute;n los datos.
+     * \return Referencia al flujo de entrada.
+     */
+    friend std::istream & operator>>(std::istream & entrada, Expresion &expresion);
 
     Expresion();
 
@@ -17,22 +32,20 @@ public:
 
     void CapturarExpresion();
 
-    void ImprimirExpresion();
+    void ImprimirExpresion() const;
 
-    float EvaluarExpresion();
-
-    // MÉTODOS DEVELOPER
+    float EvaluarExpresion() const;
 
     void ImprimirPolacaInversa();
 
-    bool ObtenerValidez();
+    bool ObtenerValidez() const;
 
 
-    class SyntaxError : public std::exception {
+    class ErrorSintaxis : public std::exception {
     public:
-        /** \brief Constructor por defecto de la excepci&oacute;n SyntaxError.
+        /** \brief Constructor por defecto de la excepci&oacute;n ErrorSintaxis.
          */
-        SyntaxError() throw();
+        ErrorSintaxis() throw();
 
         /** \brief Devuelve una descripci&oacute;n del error cuando la expresi&oacute;n no est&eacute; bien escrita.
          *
@@ -41,11 +54,11 @@ public:
         virtual const char *what() const throw();
     };
 
-    class MathError : public std::exception {
+    class ErrorCalculo : public std::exception {
     public:
-        /** \brief Constructor por defecto de la excepci&oacute;n MathError.
+        /** \brief Constructor por defecto de la excepci&oacute;n ErrorCalculo.
          */
-        MathError() throw();
+        ErrorCalculo() throw();
 
         /** \brief Devuelve una descripci&oacute;n del error cuando el resultado no est&eacute; definido.
          *
@@ -55,12 +68,28 @@ public:
         virtual const char *what() const throw();
     };
 
+    class ErrorNulo : public std::exception {
+    public:
+        /** \brief Constructor por defecto de la excepci&oacute;n ErrorNulo.
+         */
+        ErrorNulo() throw();
+
+        /** \brief Devuelve una descripci&oacute;n del error cuando la expresi&oacute;n est&aacute; vac&iacute;a.
+         *
+         * \return Cadena de caracteres con el mensaje de error.
+         */
+        virtual const char *what() const throw();
+    };
+
 private:
 
     string notInfija; // Notacion infija es del tipo A + B
     bool valido; // Para indicar si la exprecion es valida o no
     string notPolacaInversa; // Notación polaca inversa
 
+    string infijaTokenizada; // para guardar la versión procesada de las funciones de los puntos extra
+
+    void TokenizarFunciones();
     bool ValidarExpresion();
     int ObtenerPrioridad(char operador);
     void ConversionInfAPol();

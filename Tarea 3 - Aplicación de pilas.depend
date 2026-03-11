@@ -10,20 +10,22 @@
 	<iostream>
 	<string>
 
-1773114278 source:c:\users\axel\desktop\4to semestre\estructura de datos\tareas\tarea 3 - aplicación de pilas\expresion.cpp
+1773195907 source:c:\users\axel\desktop\4to semestre\estructura de datos\tareas\tarea 3 - aplicación de pilas\expresion.cpp
 	<cctype>
 	<cmath>
 	"Expresion.hpp"
 	"Pila.hpp"
 
-1773115236 c:\users\axel\desktop\4to semestre\estructura de datos\tareas\tarea 3 - aplicación de pilas\expresion.hpp
+1773194193 c:\users\axel\desktop\4to semestre\estructura de datos\tareas\tarea 3 - aplicación de pilas\expresion.hpp
 	<iostream>
 	<string>
 
-1773114497 source:c:\users\axel\desktop\4to semestre\estructura de datos\tareas\tarea 3 - aplicación de pilas\main.cpp
+1773193158 source:c:\users\axel\desktop\4to semestre\estructura de datos\tareas\tarea 3 - aplicación de pilas\main.cpp
 	<iostream>
 	<cctype>
 	"Expresion.hpp"
+	"CapturaSegura.hpp"
+	"Menu.hpp"
 
 1773074129 c:\users\axel\desktop\4to semestre\estructura de datos\tareas\tarea 3 - aplicación de pilas\pila.hpp
 	<exception>
@@ -52,4 +54,19 @@
 	<iostream>
 	<cctype>
 	"Expresion.hpp"
+
+1773192397 source:c:\users\axel\desktop\4to semestre\estructura de datos\tareas\tarea 3 - aplicación de pilas\menu.cpp
+	<iostream>
+	<limits>
+	"Menu.hpp"
+
+1773190732 c:\users\axel\desktop\4to semestre\estructura de datos\tareas\tarea 3 - aplicación de pilas\menu.hpp
+	"Expresion.hpp"
+
+1771225631 c:\users\axel\desktop\4to semestre\estructura de datos\tareas\tarea 3 - aplicación de pilas\capturasegura.hpp
+	"CapturaSegura.tpp"
+
+1771225631 c:\users\axel\desktop\4to semestre\estructura de datos\tareas\tarea 3 - aplicación de pilas\capturasegura.tpp
+	<iostream>
+	<limits>
 
