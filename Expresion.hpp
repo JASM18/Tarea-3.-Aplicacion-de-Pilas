@@ -152,10 +152,10 @@ public:
 
 private:
 
-    string notInfija;           /// Una cadena de caracteres para la expresi&oacute;n en notaci&oacute;n infija.
-    bool valido;                /// Un indicador del estado de la expresi&oacute;n: true si es v&aacute;lida, false en caso contrario
-    string notPolacaInversa;    /// Una cadena de caracteres para la expresi&oacute;n en notaci&oacute;n polaca inversa
-    string infijaTokenizada;    /// Cadena auxiliar para guardar la versi&oacute;n procesada de las funciones de los puntos extra
+    string notInfija;           ///< Una cadena de caracteres para la expresi&oacute;n en notaci&oacute;n infija.
+    bool valido;                ///< Un indicador del estado de la expresi&oacute;n: true si es v&aacute;lida, false en caso contrario
+    string notPolacaInversa;    ///< Una cadena de caracteres para la expresi&oacute;n en notaci&oacute;n polaca inversa
+    string infijaTokenizada;    ///< Cadena auxiliar para guardar la versi&oacute;n procesada de las funciones de los puntos extra
 
     /** \brief Convierte las palabras clave de las funciones trigonom&eacute;tricas y logar&iacute;tmicas a tokens de un solo caracter.
      * \return void

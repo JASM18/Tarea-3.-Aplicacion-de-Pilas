@@ -81,7 +81,7 @@ void Expresion::CapturarExpresion()
 void Expresion::ImprimirExpresion() const
 {
     if(notInfija.empty()){
-        cout << "La expresi\242n esta vacia.";
+        cout << "La expresi\242n esta vac\241a.";
     }else{
         cout << notInfija;
     }
@@ -264,7 +264,7 @@ Expresion::ErrorNulo::ErrorNulo() throw() {}
 
 const char *Expresion::ErrorNulo::what() const throw()
 {
-    return "Error de expresion nula.";
+    return "Error de expresi\242n nula.";
 }
 
 //********************************
