@@ -4,3 +4,4 @@
 html/* linguist-generated=true 
 doxygen/* linguist-generated=true 
 *.cbp linguist-generated=true 
+*.layout linguist-generated=true 
