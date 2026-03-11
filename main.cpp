@@ -4,6 +4,28 @@
  * \author S&aacute;nchez Montoy, Jes&uacute;s Axel
  * \author Portugal Arreola, Marian Bethsab&eacute;
  * \date 07/03/2026
+ * \code{.cpp}
+ * #include <iostream>
+ * * using namespace std;
+ * * int main(){
+ * * try{
+ * * Expresion A;
+ * * cout << "Ingresa la expresi\242n: ";
+ * cin >> A;
+ * * cout << "Expresion: " << A << endl;
+ * * cout << "Resultado: " << A.EvaluarExpresion() << endl;
+ * * }catch(Expresion::ErrorNulo &errorNulo){
+ * cerr << "Error: " << errorNulo.what() << endl;
+ * }catch(Expresion::ErrorSintaxis &errorSyntax){
+ * cerr << "Error: " << errorSyntax.what() << endl;
+ * }catch(Expresion::ErrorCalculo &errorMath){
+ * cerr << "Error: " << errorMath.what() << endl;
+ * }catch(...){
+ * cerr << "Ocurri\242 un error inesperado." << endl;
+ * }
+ * * return 0;
+ * }
+ * \endcode
  */
 
 #include <iostream>
@@ -12,7 +34,6 @@
 #include "Expresion.hpp"
 #include "CapturaSegura.hpp"
 #include "Menu.hpp"
-
 
 using namespace std;
 

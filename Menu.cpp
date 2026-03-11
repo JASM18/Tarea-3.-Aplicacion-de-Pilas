@@ -39,7 +39,7 @@ void GConstructores()
 
 
         cout << "\n-> Construyendo Expresi\242n Default2..." << endl;
-        Expresion Default2("(2.1^[3.2*3.1^{1/4}^({[(2+4)*6]^2/(8-6)}*(2-4))])+2*(8-6/2+4*2)");
+        Expresion Default2("{[(exp(0) + log(100) - ln(1)) * sqrt(16)] / (cos(0) + sin(0))} + (-2.5e1 * 4) + (1.5E^2 / 3 + .5e^1 * 2) + 2^[(3 + 1) / 2] - tan(0)");
 
         cout << "\n-> Comprobando atributos..." << endl;
         cout << "\250La expresi\242n es v\240lida?: " << (Default2.ObtenerValidez() ? "S\241." : "No.") << endl;

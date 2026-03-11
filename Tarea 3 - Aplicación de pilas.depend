@@ -34,7 +34,7 @@
 1773074391 c:\users\axel\desktop\4to semestre\estructura de datos\tareas\tarea 3 - aplicación de pilas\pila.tpp
 	<iostream>
 
-1773210967 source:e:\github\pila-de-elementos-enlazados-main\tarea-3.-aplicacion-de-pilas\expresion.cpp
+1773211455 source:e:\github\pila-de-elementos-enlazados-main\tarea-3.-aplicacion-de-pilas\expresion.cpp
 	<cctype>
 	<cmath>
 	"Expresion.hpp"
@@ -51,7 +51,7 @@
 1773208125 e:\github\pila-de-elementos-enlazados-main\tarea-3.-aplicacion-de-pilas\pila.tpp
 	<iostream>
 
-1773211059 source:e:\github\pila-de-elementos-enlazados-main\tarea-3.-aplicacion-de-pilas\main.cpp
+1773211673 source:e:\github\pila-de-elementos-enlazados-main\tarea-3.-aplicacion-de-pilas\main.cpp
 	<iostream>
 	<cctype>
 	"Expresion.hpp"
@@ -83,7 +83,7 @@
 1773208854 e:\github\pila-de-elementos-enlazados-main\tarea-3.-aplicacion-de-pilas\menu.hpp
 	"Expresion.hpp"
 
-1773210552 source:e:\github\pila-de-elementos-enlazados-main\tarea-3.-aplicacion-de-pilas\menu.cpp
+1773211673 source:e:\github\pila-de-elementos-enlazados-main\tarea-3.-aplicacion-de-pilas\menu.cpp
 	<iostream>
 	<limits>
 	"Menu.hpp"
