@@ -34,26 +34,29 @@
 1773074391 c:\users\axel\desktop\4to semestre\estructura de datos\tareas\tarea 3 - aplicación de pilas\pila.tpp
 	<iostream>
 
-1773072943 source:e:\github\pila-de-elementos-enlazados-main\tarea-3.-aplicacion-de-pilas\expresion.cpp
+1773209666 source:e:\github\pila-de-elementos-enlazados-main\tarea-3.-aplicacion-de-pilas\expresion.cpp
 	<cctype>
+	<cmath>
 	"Expresion.hpp"
 	"Pila.hpp"
 
-1773011916 e:\github\pila-de-elementos-enlazados-main\tarea-3.-aplicacion-de-pilas\expresion.hpp
+1773209612 e:\github\pila-de-elementos-enlazados-main\tarea-3.-aplicacion-de-pilas\expresion.hpp
 	<iostream>
 	<string>
 
-1773011916 e:\github\pila-de-elementos-enlazados-main\tarea-3.-aplicacion-de-pilas\pila.hpp
+1773208125 e:\github\pila-de-elementos-enlazados-main\tarea-3.-aplicacion-de-pilas\pila.hpp
 	<exception>
 	"Pila.tpp"
 
-1773011916 e:\github\pila-de-elementos-enlazados-main\tarea-3.-aplicacion-de-pilas\pila.tpp
+1773208125 e:\github\pila-de-elementos-enlazados-main\tarea-3.-aplicacion-de-pilas\pila.tpp
 	<iostream>
 
-1773036790 source:e:\github\pila-de-elementos-enlazados-main\tarea-3.-aplicacion-de-pilas\main.cpp
+1773208893 source:e:\github\pila-de-elementos-enlazados-main\tarea-3.-aplicacion-de-pilas\main.cpp
 	<iostream>
 	<cctype>
 	"Expresion.hpp"
+	"CapturaSegura.hpp"
+	"Menu.hpp"
 
 1773192397 source:c:\users\axel\desktop\4to semestre\estructura de datos\tareas\tarea 3 - aplicación de pilas\menu.cpp
 	<iostream>
@@ -69,4 +72,19 @@
 1771225631 c:\users\axel\desktop\4to semestre\estructura de datos\tareas\tarea 3 - aplicación de pilas\capturasegura.tpp
 	<iostream>
 	<limits>
+
+1773200891 e:\github\pila-de-elementos-enlazados-main\tarea-3.-aplicacion-de-pilas\capturasegura.hpp
+	"CapturaSegura.tpp"
+
+1773200891 e:\github\pila-de-elementos-enlazados-main\tarea-3.-aplicacion-de-pilas\capturasegura.tpp
+	<iostream>
+	<limits>
+
+1773208854 e:\github\pila-de-elementos-enlazados-main\tarea-3.-aplicacion-de-pilas\menu.hpp
+	"Expresion.hpp"
+
+1773208855 source:e:\github\pila-de-elementos-enlazados-main\tarea-3.-aplicacion-de-pilas\menu.cpp
+	<iostream>
+	<limits>
+	"Menu.hpp"
 

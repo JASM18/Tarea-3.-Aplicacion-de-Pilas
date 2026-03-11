@@ -1,3 +1,11 @@
+/**
+ * \file Expresion.cpp
+ * \brief Este archivo contiene la implementaci&oacute;n de los m&eacute;todos de la clase Expresion.
+ * \author S&aacute;nchez Montoy, Jes&uacute;s Axel
+ * \author Portugal Arreola, Marian Bethsab&eacute;
+ * \date 07/03/2026
+ */
+
 #include <cctype>
 #include <cmath>
 
@@ -6,15 +14,6 @@
 
 using std::cout;
 using std::endl;
-
-enum Estado {
-    INICIO_O_APERTURA,
-    ESPERANDO_OPERANDO,
-    LEYENDO_ENTERO,
-    LEYENDO_DECIMAL,
-    ESPERANDO_OPERADOR_O_CIERRE,
-    ESPERANDO_APERTURA_FUNCION
-};
 
 //********************************
 // CONSTRUCTORES
@@ -92,11 +91,11 @@ void Expresion::ImprimirExpresion() const
 
 float Expresion::EvaluarExpresion() const
 {
-    if (notInfija.empty()){
+    if(notInfija.empty()){
        throw ErrorNulo();
     }
 
-    if (this->valido == false){
+    if(this->valido == false){
        throw ErrorSintaxis();
     }
 
@@ -114,7 +113,7 @@ float Expresion::EvaluarExpresion() const
             // El numero se convierte a flotante
             // El flotante se mete a la pila
 
-            // Si el usuario metió un punto solitario (".", "-.", "+."), se convierte en
+            // Si el usuario metió un punto solitario (".", "-.", "+."), se convierte en 0.
             if(numero == "."){
                 numero = "0";
             }
@@ -123,17 +122,22 @@ float Expresion::EvaluarExpresion() const
             evaluacion.Agregar(std::stof(numero));
             numero = "";
 
+        }else if(caracter == '+' || caracter == '-' || caracter == '*' || caracter == '/' || caracter == '^' ||caracter == 'S' || caracter == 'C' || caracter == 'T' || caracter == 'R' || caracter == 'L' || caracter == 'N' || caracter == 'E'){
 
+            if (caracter == 'E' && !numero.empty()) {
+                numero = numero + caracter;
+                continue; // Salta los operadores y sigue armando el número
+            }
 
+            if ((caracter == '+' || caracter == '-') && !numero.empty() && (numero[numero.size() - 1] == 'e' || numero[numero.size() - 1] == 'E')) {
+                numero = numero + caracter;
+                continue; // Salta los operadores y sigue armando el número
+            }
 
-
-        }else if(caracter == '+' || caracter == '-' || caracter == '*' || caracter == '/' || caracter == '^' ||
-                 caracter == 'S' || caracter == 'C' || caracter == 'T' || caracter == 'R' || caracter == 'L' || caracter == 'N' || caracter == 'E'){
-
-            // ¿Es una operación de dos números o de un solo número?
+            // Es una operación de dos números o de un solo número?
             bool esBinario = (caracter == '+' || caracter == '-' || caracter == '*' || caracter == '/' || caracter == '^');
 
-            if (esBinario) {
+            if(esBinario) {
                 num2 = evaluacion.ObtenerTope(); evaluacion.Eliminar();
                 num1 = evaluacion.ObtenerTope(); evaluacion.Eliminar();
             } else {
@@ -172,12 +176,16 @@ float Expresion::EvaluarExpresion() const
                     break;
             }
 
-            // ¡AQUÍ ESTÁ LA MAGIA QUE FALTABA! Guardamos el resultado de vuelta a la pila.
+            // Guardamos el resultado de vuelta a la pila.
             evaluacion.Agregar(resultado);
 
         }else{ // De a fuerzas es un número
             numero = numero + caracter;
         }
+    }
+
+    if (!evaluacion.EstaVacia()) {
+        resultado = evaluacion.ObtenerTope();
     }
 
     if(std::isinf(resultado) || std::isnan(resultado)){
@@ -193,7 +201,6 @@ float Expresion::EvaluarExpresion() const
 
 void Expresion::ImprimirPolacaInversa()
 {
-
 
     if(notPolacaInversa.empty()){
 
@@ -290,22 +297,27 @@ bool Expresion::ValidarExpresion()
 
     Estado actual = INICIO_O_APERTURA;
 
-    for(int i = 0; i < this->infijaTokenizada.size() ; i++){
+    for(int i = 0 ; i < this->infijaTokenizada.size() ; i++){
 
         char caracter = infijaTokenizada[i];
 
-        if(caracter == ' ') continue;
         // Ignora espacios, retornos de carro (\r) y saltos de línea (\n)
         if(caracter == ' ' || caracter == '\r' || caracter == '\n') continue;
 
         if(isalpha(caracter)){
 
-            if(caracter == 'S' || caracter == 'C' || caracter == 'T' ||
-               caracter == 'R' || caracter == 'L' || caracter == 'N' || caracter == 'E'){
+            if ((caracter == 'e' || caracter == 'E') && (actual == LEYENDO_ENTERO || actual == LEYENDO_DECIMAL || actual == LEYENDO_ENTERO_EXPONENTE)) {
+
+                if (actual == LEYENDO_ENTERO || actual == LEYENDO_DECIMAL){
+                    actual = LEYENDO_EXPONENTE;
+                }else{
+                    return (this->valido = false); // No permite cosas como 3e3e3
+                }
+            }else if(caracter == 'S' || caracter == 'C' || caracter == 'T' || caracter == 'R' || caracter == 'L' || caracter == 'N' || caracter == 'E'){
 
                 // Una función solo es válida donde podría ir un número
                 if(actual == INICIO_O_APERTURA || actual == ESPERANDO_OPERANDO){
-                    actual = ESPERANDO_APERTURA_FUNCION; // Obliga a que el siguiente sea '('
+                   actual = ESPERANDO_APERTURA_FUNCION; // Obliga a que el siguiente sea '('
                 }else{
                     return (this->valido = false);
                 }
@@ -323,6 +335,8 @@ bool Expresion::ValidarExpresion()
             // Si estábamos esperando operando, ahora estamos leyendo el valor
             if(actual == INICIO_O_APERTURA ||actual == ESPERANDO_OPERANDO){
                 actual = LEYENDO_ENTERO;
+            }else if(actual == LEYENDO_EXPONENTE || actual == LEYENDO_SIGNO_EXPONENTE){
+                actual = LEYENDO_ENTERO_EXPONENTE;
             }
 
         }else if(caracter == '.'){ // Si lee un '.'
@@ -341,7 +355,17 @@ bool Expresion::ValidarExpresion()
                 return (this->valido = false);
             }
 
-            if(actual == INICIO_O_APERTURA){
+
+            if(actual == LEYENDO_EXPONENTE){
+
+                // El signo es parte de la notación científica
+                if(caracter == '+' || caracter == '-'){
+                    actual = LEYENDO_SIGNO_EXPONENTE;
+                }else{
+                    return (this->valido = false);
+                }
+
+            }else if(actual == INICIO_O_APERTURA){
 
                 if(caracter == '+' || caracter == '-'){
                     actual = ESPERANDO_OPERANDO; // Obliga a que sea otro caracter
@@ -350,7 +374,7 @@ bool Expresion::ValidarExpresion()
                 }
 
             }else if(actual == ESPERANDO_OPERANDO){
-                return (this->valido = false); // Evia "++"
+                return (this->valido = false); // Evita "++"
             }else{
                 actual = ESPERANDO_OPERANDO;
             }
@@ -392,10 +416,14 @@ bool Expresion::ValidarExpresion()
 
     // Si terminó la cadena y seguía esperando un número (Ej: "3+")
     // O si nunca se escribió nada válido (Ej: "   ")
-    if (actual == ESPERANDO_OPERANDO || actual == INICIO_O_APERTURA) return (this->valido = false);
+    if(actual == ESPERANDO_OPERANDO || actual == INICIO_O_APERTURA){
+        return (this->valido = false);
+    }
 
     // Si la pila no está vacía, faltó cerrar algún símbolo (Ej: "(3+2")
-    if (!agrupacion.EstaVacia()) return (this->valido = false);
+    if(!agrupacion.EstaVacia()){
+        return (this->valido = false);
+    }
 
     return (this->valido = true);
 }
@@ -422,63 +450,82 @@ void Expresion::ConversionInfAPol()
 
         char caracter = this->infijaTokenizada[i];
 
-        if(caracter == ' ') continue;
         // Mantenemos la cadena Polaca limpia de basura
         if(caracter == ' ' || caracter == '\r' || caracter == '\n') continue;
 
-        if(isdigit(caracter) || caracter == '.'){ // Si es un operando
+        // Se busca el caracter anterior ignorando espacios (Para evaluar unarios y notación científica)
+        char prevChar = ' ';
+        for(int j = i - 1 ; j >= 0 ; j--) {
+            if (this->infijaTokenizada[j] != ' ' && this->infijaTokenizada[j] != '\r' && this->infijaTokenizada[j] != '\n') {
+                prevChar = this->infijaTokenizada[j]; break;
+            }
+        }
+
+        // Se busca el caracter siguiente (Para saber si el número se acabó y poner el $)
+        char nextChar = ' ';
+        for (int n = i + 1 ; n < this->infijaTokenizada.size() ; n++) {
+            if (this->infijaTokenizada[n] != ' ' && this->infijaTokenizada[n] != '\r' && this->infijaTokenizada[n] != '\n') {
+                nextChar = this->infijaTokenizada[n]; break;
+            }
+        }
+
+        // El caracter actual pertenece a un número?
+        bool esParteDeNumero = false;
+
+        if(isdigit(caracter) || caracter == '.'){
+            esParteDeNumero = true;
+        }else if( (caracter == 'e' || caracter == 'E') && (isdigit(prevChar) || prevChar == '.') ){
+            esParteDeNumero = true; // Es la 'e' de notación científica
+        }else if( (caracter == '+' || caracter == '-') && (prevChar == 'e' || prevChar == 'E') ){
+            esParteDeNumero = true; // Es el signo del exponente
+        }
+
+        if(esParteDeNumero){ // Si es un operando
 
             this->notPolacaInversa += caracter;
 
-            // ¿Cómo sabemos si ya terminamos de leer el número para poner el $?
-            // Si es el último caracter del arreglo, o si el SIGUIENTE caracter NO es un número/punto.
-            if(i == this->infijaTokenizada.size() - 1 || (!isdigit(this->infijaTokenizada[i+1]) && this->infijaTokenizada[i+1] != '.')){
+            bool sigueNumero = false;
+
+            if(isdigit(nextChar) || nextChar == '.'){
+                sigueNumero = true;
+            }else if((nextChar == 'e' || nextChar == 'E') && (isdigit(caracter) || caracter == '.')){
+                sigueNumero = true;
+            }else if((nextChar == '+' || nextChar == '-') && (caracter == 'e' || caracter == 'E')){
+                sigueNumero = true;
+            }
+
+            if(!sigueNumero){
                 this->notPolacaInversa += "$";
             }
+
         }else if(caracter == '+' || caracter == '-' || caracter == '*' || caracter == '/' || caracter == '^' || caracter == 'S' || caracter == 'C' || caracter == 'T' || caracter == 'R' || caracter == 'L' || caracter == 'N' || caracter == 'E'){
 
-            // A) Verificar si es un operador unario para inyectar un "0$"
-            // (La lógica del unario se mantiene igual, no afecta a las funciones)
-            bool esUnario = false;
-            if(i == 0){
-                esUnario = true;
-            }else{
-                int j = i - 1;
-                while(j >= 0 && this->infijaTokenizada[j] == ' ') j--; // Retrocede saltando espacios
-                if(j >= 0 && (this->infijaTokenizada[j] == '(' || this->infijaTokenizada[j] == '[' || this->infijaTokenizada[j] == '{')){
-                    esUnario = true;
-                }
-            }
 
-            // OJO: Solo los '+' y '-' pueden ser unarios en este contexto de rellenar con ceros
-            if(esUnario && (caracter == '+' || caracter == '-')){
+            // Si es un '+' o '-' solitario al inicio de una agrupación, le inyectamos su 0$
+            if((caracter == '+' || caracter == '-') && (prevChar == ' ' || prevChar == '(' || prevChar == '[' || prevChar == '{')){
                 this->notPolacaInversa += "0$";
             }
 
-            // B) Comparar prioridades con la pila
-            // No comparamos si el tope es un paréntesis
             while(!Lectura.EstaVacia() && Lectura.ObtenerTope() != '(' && Lectura.ObtenerTope() != '[' && Lectura.ObtenerTope() != '{'){
 
                 char tope = Lectura.ObtenerTope();
-                int prioTope = ObtenerPrioridad(tope);
-                int prioCar = ObtenerPrioridad(caracter);
-
-                // Si es asociatividad Izquierda-Derecha (+, -, *, /, Funciones): Saca si es MAYOR O IGUAL
-                if(caracter != '^' && prioTope >= prioCar){
+                if(caracter != '^' && ObtenerPrioridad(tope) >= ObtenerPrioridad(caracter)){
                     this->notPolacaInversa += tope;
                     Lectura.Eliminar();
-                }else if(caracter == '^' && prioTope > prioCar){ // Si es asociatividad Derecha-Izquierda (^): Saca solo si es MAYOR estricto
+                }else if(caracter == '^' && ObtenerPrioridad(tope) > ObtenerPrioridad(caracter)){
                     this->notPolacaInversa += tope;
                     Lectura.Eliminar();
                 }else{
-                    break; // El nuevo operador/función gana
+                    break;
                 }
+
             }
 
             Lectura.Agregar(caracter);
 
         }else if(caracter == '(' || caracter == '[' || caracter == '{'){
             Lectura.Agregar(caracter);
+
         }else if(caracter == ')' || caracter == ']' || caracter == '}'){ // Si es un cierre de agrupación
 
             // Sacamos todo a la expresión hasta toparnos con la apertura
@@ -504,15 +551,31 @@ void Expresion::ConversionInfAPol()
 //**********************************
 
 // Este método busca las palabras clave y las reemplaza por su Token mayúscula
-void Expresion::TokenizarFunciones(){
+void Expresion::TokenizarFunciones()
+{
     this->infijaTokenizada = this->notInfija;
 
+    // Limpiar notación científica: e^ -> e, E^ -> E
+    size_t pos = 0;
+
+    while((pos = this->infijaTokenizada.find("e^", pos)) != string::npos) {
+        this->infijaTokenizada.replace(pos, 2, "e");
+    }
+
+    pos = 0;
+
+    while((pos = this->infijaTokenizada.find("E^", pos)) != string::npos) {
+        this->infijaTokenizada.replace(pos, 2, "E");
+    }
+
+    // Se "tokenizan" las funciones
     const string funciones[] = {"sin", "cos", "tan", "sqrt", "log", "ln", "exp"};
     const string tokens[] = {"S", "C", "T", "R", "L", "N", "E"};
 
     for(int i = 0; i < 7; ++i){
-        size_t pos = 0;
-        // Busca todas las apariciones de la función y las reemplaza
+
+        pos = 0;
+
         while((pos = this->infijaTokenizada.find(funciones[i], pos)) != string::npos){
             this->infijaTokenizada.replace(pos, funciones[i].length(), tokens[i]);
             pos += tokens[i].length();

@@ -1,4 +1,12 @@
-#include <iostream>
+/**
+ * \file Pila.tpp
+ * \brief Este archivo contiene la implementaci&oacute;n de los m&eacute;todos de la plantilla de clase Pila de elementos enlazados.
+ * \author S&aacute;nchez Montoy, Jes&uacute;s Axel
+ * \author Portugal Arreola, Marian Bethsab&eacute;
+ * \date 07/03/2026
+ */
+
+ #include <iostream>
 
 //*****************************************
 // CONSTRUCTORES

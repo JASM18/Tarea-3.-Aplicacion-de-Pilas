@@ -1,3 +1,11 @@
+/**
+ * \file Pila.hpp
+ * \brief Este archivo contiene la definici&oacute;n de la plantilla de clase Pila de elementos enlazados.
+ * \author S&aacute;nchez Montoy, Jes&uacute;s Axel
+ * \author Portugal Arreola, Marian Bethsab&eacute;
+ * \date 07/03/2026
+ */
+
 #ifndef PILA_HPP
 #define PILA_HPP
 
@@ -6,20 +14,20 @@
 template <typename T = std::string>
 class Pila {
 public:
-    /** Default constructor */
+    /** Constructor por default */
     Pila();
 
-    /** Default destructor */
+    /** Destructor por default */
     ~Pila();
 
-    /** Copy constructor
-     *  \param pila Object to copy from
+    /** Constructor de copias
+     *  \param pila Objecto el cual copiar
      */
     Pila(const Pila& pila);
 
-    /** Assignment operator
-     *  \param pila Object to assign from
-     *  \return A reference to this
+    /** Operador de asignaci&oacute;n
+     *  \param pila Object al cual igualar
+     *  \return Una referencia a this
      */
     Pila& operator=(const Pila& pila);
 
@@ -52,14 +60,14 @@ public:
      */
     int ObtenerTam() const;
 
-    /** \brief Nos dice si la pila esta vacia o no
+    /** \brief Nos dice si la pila esta vac&iacute;a o no
      *
      * \return bool
      *
      */
     bool EstaVacia() const;
 
-    /** \brief Vacia toda la pila, pone el tope en -1
+    /** \brief Vac&icute;a toda la pila, pone el tope en -1
      *
      * \return void
      *

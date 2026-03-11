@@ -34,6 +34,8 @@
 		</Compiler>
 		<Unit filename="Expresion.cpp" />
 		<Unit filename="Expresion.hpp" />
+		<Unit filename="Menu.cpp" />
+		<Unit filename="Menu.hpp" />
 		<Unit filename="Pila.hpp" />
 		<Unit filename="Pila.tpp" />
 		<Unit filename="main.cpp" />

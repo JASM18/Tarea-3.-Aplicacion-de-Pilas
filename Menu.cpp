@@ -1,3 +1,11 @@
+/**
+ * \file Menu.cpp
+ * \brief Este archivo contiene la implementaci&oacute;n de las funciones de la interfaz y men&uacute; de usuario.
+ * \author S&aacute;nchez Montoy, Jes&uacute;s Axel
+ * \author Portugal Arreola, Marian Bethsab&eacute;
+ * \date 07/03/2026
+ */
+
 #include <iostream>
 #include <limits>
 
@@ -12,9 +20,9 @@ void GConstructores()
 {
     system("CLS");
 
-    cout << "====================" << endl;
+    cout << "======================" << endl;
     cout << "Probando constructores" << endl;
-    cout << "====================" << endl << endl;
+    cout << "======================" << endl << endl;
 
     try{
 
@@ -22,7 +30,7 @@ void GConstructores()
         Expresion Default;
 
         cout << "\n-> Comprobando atributos..." << endl;
-        cout << "\250La expresion es valida?: " << (Default.ObtenerValidez() ? "S\241." : "No.") << endl;
+        cout << "\250La expresi\242n es v/240lida?: " << (Default.ObtenerValidez() ? "S\241." : "No.") << endl;
         cout << "Imprimiendo su expresi\242n en notaci\242n infija: " << Default << endl;
         cout << "Imprimiendo su expresi\242n en notaci\242n polaca inversa: ";
         Default.ImprimirPolacaInversa();
@@ -30,19 +38,19 @@ void GConstructores()
         //cout << "\nResultado de la evaluacion: " << Default.EvaluarExpresion() << endl;
 
 
-        cout << "\n-> Construyendo Expresion Default2..." << endl;
+        cout << "\n-> Construyendo Expresi\242n Default2..." << endl;
         Expresion Default2("(2.1^[3.2*3.1^{1/4}^({[(2+4)*6]^2/(8-6)}*(2-4))])+2*(8-6/2+4*2)");
 
         cout << "\n-> Comprobando atributos..." << endl;
-        cout << "\250La expresion es valida?: " << (Default2.ObtenerValidez() ? "S\241." : "No.") << endl;
+        cout << "\250La expresi\242n es v\240lida?: " << (Default2.ObtenerValidez() ? "S\241." : "No.") << endl;
         cout << "Imprimiendo su expresi\242n en notaci\242n infija: " << Default2 << endl;
         cout << "Imprimiendo su expresi\242n en notaci\242n polaca inversa: ";
         Default2.ImprimirPolacaInversa();
 
-        cout << "\nResultado de la evaluacion: " << Default2.EvaluarExpresion() << endl;
+        cout << "\nResultado de la evaluaci\242n: " << Default2.EvaluarExpresion() << endl;
 
-        cout << "\n¡¿Que pasa si se evalua Default?!" << endl;
-        cout << "Resultado de la evaluacion: " << Default.EvaluarExpresion() << endl;
+        cout << "\n\250Qu\202 pasa si se eval\243a Default?" << endl;
+        cout << "Resultado de la evaluaci\242n: " << Default.EvaluarExpresion() << endl;
 
 
     }catch(Expresion::ErrorNulo &errorNulo){
@@ -61,7 +69,7 @@ void GCapturar(Expresion &expr)
     system("CLS");
 
     cout << "====================" << endl;
-    cout << "Capturando expresion" << endl;
+    cout << "Capturando expresi\242n" << endl;
     cout << "====================" << endl << endl;
 
     cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -71,7 +79,7 @@ void GCapturar(Expresion &expr)
         cout << "Ingresa la expresi\242n: ";
         cin >> expr;
 
-        cout << "\n[Exito] Expresi\242n valida y lista para evaluar." << endl;
+        cout << "\n[Exito] Expresi\242n v\240lida y lista para evaluar." << endl;
 
     }catch(Expresion::ErrorNulo &errorNulo){
         cerr << "\nError: " << errorNulo.what() << endl;
@@ -88,7 +96,7 @@ void GImpInfijo(Expresion &expr)
 {
     cout << "\n- - - - - - - - - -" << endl;
 
-    cout << "Expresión infija: " << expr;
+    cout << "Expresi\242n infija: " << expr;
 
     cout << "\n\n";
 }
