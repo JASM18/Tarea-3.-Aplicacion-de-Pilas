@@ -30,7 +30,7 @@ void GConstructores()
         Expresion Default;
 
         cout << "\n-> Comprobando atributos..." << endl;
-        cout << "\250La expresi\242n es v/240lida?: " << (Default.ObtenerValidez() ? "S\241." : "No.") << endl;
+        cout << "\250La expresi\242n es v\240lida?: " << (Default.ObtenerValidez() ? "S\241." : "No.") << endl;
         cout << "Imprimiendo su expresi\242n en notaci\242n infija: " << Default << endl;
         cout << "Imprimiendo su expresi\242n en notaci\242n polaca inversa: ";
         Default.ImprimirPolacaInversa();

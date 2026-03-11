@@ -47,9 +47,9 @@ int main()
         cout << "Opciones:" << endl;
         cout << "\t" << CONSTRUCTOR << ") Pone a prueba el constructor por default y el constructor de un par\240metro." << endl;
         cout << "\t" << CAPTURAR << ") Captura una nueva expresi\242n." << endl;
-        cout << "\t" << IMP_INFIJO << ") Imprime la expresi/242n infija." << endl;
-        cout << "\t" << IMP_POLACA << ") Imprime la expresi/242n polaca inversa." << endl;
-        cout << "\t" << EVALUAR << ") Evaluar la expresi/242n." << endl;
+        cout << "\t" << IMP_INFIJO << ") Imprime la expresi\242n infija." << endl;
+        cout << "\t" << IMP_POLACA << ") Imprime la expresi\242n polaca inversa." << endl;
+        cout << "\t" << EVALUAR << ") Evaluar la expresi\242n." << endl;
         cout << "\t" << INSTRUCCIONES << ") Ver indicaciones de sintaxis." << endl;
         cout << "\t" << SALIR << ") Salir del programa." << endl;
 
