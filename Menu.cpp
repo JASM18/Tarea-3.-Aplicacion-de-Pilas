@@ -129,3 +129,36 @@ void GEvaluar(Expresion &expr)
 
     cout << "\n";
 }
+
+void GInstrucciones()
+{
+    system("CLS");
+
+    cout << "======================" << endl;
+    cout << "INSTRUCCIONES DE NOTACI\240N" << endl;
+    cout << "======================" << endl << endl;
+
+    cout << "--- NOTACION DE FUNCIONES ---" << endl;
+    cout << "x+y     -> Suma" << endl;
+    cout << "x-y     -> Resta" << endl;
+    cout << "x*y     -> Multiplicaci\242n" << endl;
+    cout << "(x)     -> Par\202ntesis" << endl;
+    cout << "x/y     -> Divisi\242n" << endl;
+    cout << "x^y     -> Exponenciaci\242n" << endl;
+    cout << "sin(x)  -> Seno" << endl;
+    cout << "cos(x)  -> Coseno" << endl;
+    cout << "tan(x)  -> Tangente" << endl;
+    cout << "sqrt(x) -> Ra\241z cuadrada" << endl;
+    cout << "log(x)  -> Logaritmo base 10" << endl;
+    cout << "ln(x)   -> Logaritmo natural" << endl;
+    cout << "exp(x)  -> Exponencial (e^x)" << endl;
+
+    cout << "\nNotas: " << endl;
+    cout << "\n-> Ejemplo v\240lido: \"sin(3.1416/2) + sqrt(16)\"." << endl;
+    cout << "-> La multiplicaci\242n por par\202ntesis y un escalar sin usar el s\240mbolo '*' NO se admite (Ej: \"3(1+2))\"." << endl;
+    cout << "-> Los c\240lculos trigonom\202tricos est\240n en radianes." << endl;
+    cout << "-> Se aceptan n\243meros con punto decimal (Ej: \"0.3\", \".3\", \"3.\")" << endl;
+    cout << "-> Se acepta notaci\242n cient\241fica (Ej: \"3.0e05\", \".3e2\", \".3e^02\", ...)" << endl;
+
+    cout << endl;
+}

@@ -10,28 +10,28 @@
 	<iostream>
 	<string>
 
-1773195907 source:c:\users\axel\desktop\4to semestre\estructura de datos\tareas\tarea 3 - aplicación de pilas\expresion.cpp
+1773242748 source:c:\users\axel\desktop\4to semestre\estructura de datos\tareas\tarea 3 - aplicación de pilas\expresion.cpp
 	<cctype>
 	<cmath>
 	"Expresion.hpp"
 	"Pila.hpp"
 
-1773194193 c:\users\axel\desktop\4to semestre\estructura de datos\tareas\tarea 3 - aplicación de pilas\expresion.hpp
+1773242691 c:\users\axel\desktop\4to semestre\estructura de datos\tareas\tarea 3 - aplicación de pilas\expresion.hpp
 	<iostream>
 	<string>
 
-1773193158 source:c:\users\axel\desktop\4to semestre\estructura de datos\tareas\tarea 3 - aplicación de pilas\main.cpp
+1773242029 source:c:\users\axel\desktop\4to semestre\estructura de datos\tareas\tarea 3 - aplicación de pilas\main.cpp
 	<iostream>
 	<cctype>
 	"Expresion.hpp"
 	"CapturaSegura.hpp"
 	"Menu.hpp"
 
-1773074129 c:\users\axel\desktop\4to semestre\estructura de datos\tareas\tarea 3 - aplicación de pilas\pila.hpp
+1773209967 c:\users\axel\desktop\4to semestre\estructura de datos\tareas\tarea 3 - aplicación de pilas\pila.hpp
 	<exception>
 	"Pila.tpp"
 
-1773074391 c:\users\axel\desktop\4to semestre\estructura de datos\tareas\tarea 3 - aplicación de pilas\pila.tpp
+1773209967 c:\users\axel\desktop\4to semestre\estructura de datos\tareas\tarea 3 - aplicación de pilas\pila.tpp
 	<iostream>
 
 1773211455 source:e:\github\pila-de-elementos-enlazados-main\tarea-3.-aplicacion-de-pilas\expresion.cpp
@@ -58,12 +58,12 @@
 	"CapturaSegura.hpp"
 	"Menu.hpp"
 
-1773192397 source:c:\users\axel\desktop\4to semestre\estructura de datos\tareas\tarea 3 - aplicación de pilas\menu.cpp
+1773243014 source:c:\users\axel\desktop\4to semestre\estructura de datos\tareas\tarea 3 - aplicación de pilas\menu.cpp
 	<iostream>
 	<limits>
 	"Menu.hpp"
 
-1773190732 c:\users\axel\desktop\4to semestre\estructura de datos\tareas\tarea 3 - aplicación de pilas\menu.hpp
+1773242012 c:\users\axel\desktop\4to semestre\estructura de datos\tareas\tarea 3 - aplicación de pilas\menu.hpp
 	"Expresion.hpp"
 
 1771225631 c:\users\axel\desktop\4to semestre\estructura de datos\tareas\tarea 3 - aplicación de pilas\capturasegura.hpp

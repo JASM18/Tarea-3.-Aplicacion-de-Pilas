@@ -89,7 +89,7 @@ void Expresion::ImprimirExpresion() const
 
 //********************************
 
-float Expresion::EvaluarExpresion() const
+double Expresion::EvaluarExpresion() const
 {
     if(notInfija.empty()){
        throw ErrorNulo();
@@ -99,10 +99,10 @@ float Expresion::EvaluarExpresion() const
        throw ErrorSintaxis();
     }
 
-    Pila<float> evaluacion;
+    Pila<double> evaluacion;
 
     string numero = "";
-    float num1 = 0.0, num2 = 0.0, resultado = 0.0;
+    double num1 = 0.0, num2 = 0.0, resultado = 0.0;
 
     for(int i = 0 ; i < this->notPolacaInversa.size() ; ++i){
 
@@ -110,16 +110,16 @@ float Expresion::EvaluarExpresion() const
 
         if(caracter == '$'){
 
-            // El numero se convierte a flotante
-            // El flotante se mete a la pila
+            // El numero se convierte a double
+            // El double se mete a la pila
 
             // Si el usuario metió un punto solitario (".", "-.", "+."), se convierte en 0.
             if(numero == "."){
                 numero = "0";
             }
 
-            // El numero se convierte a flotante y se mete a la pila
-            evaluacion.Agregar(std::stof(numero));
+            // El numero se convierte a double y se mete a la pila
+            evaluacion.Agregar(std::stod(numero));
             numero = "";
 
         }else if(caracter == '+' || caracter == '-' || caracter == '*' || caracter == '/' || caracter == '^' ||caracter == 'S' || caracter == 'C' || caracter == 'T' || caracter == 'R' || caracter == 'L' || caracter == 'N' || caracter == 'E'){

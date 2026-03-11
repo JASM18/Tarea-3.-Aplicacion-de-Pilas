@@ -45,4 +45,11 @@ void GImpPolaca(Expresion &expr);
  */
 void GEvaluar(Expresion &expr);
 
+/** \brief Funci&oacute;n que nos muestra algunas instrucciones de notaci&oacute;n.
+ *
+ * \return void
+ *
+ */
+void GInstrucciones();
+
 #endif // MENU_HPP_INCLUDED

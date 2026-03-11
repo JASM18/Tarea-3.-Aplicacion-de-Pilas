@@ -79,7 +79,7 @@ public:
 
     /** \brief M&eacute;todo que eval&uacute;a la expresi&oacute;n postfija y calcula su resultado matem&aacute;tico.
      *
-     * \return El resultado en punto flotante de la evaluaci&oacute;n aritm&eacute;tica.
+     * \return El resultado en double de la evaluaci&oacute;n aritm&eacute;tica.
      *
      * \pre
      * La expresi&oacute;n debe haber sido capturada y validada correctamente previamente (estado v&aacute;lido = true).
@@ -87,7 +87,7 @@ public:
      * \throw ErrorSintaxis Lanza una excepci&oacute;n si la expresi&oacute;n no pas&oacute; la validaci&oacute;n.
      * \throw ErrorCalculo Lanza una excepci&oacute;n si ocurre una indeterminaci&oacute;n (ej. divisi&oacute;n por cero o logaritmo negativo).
      */
-    float EvaluarExpresion() const;
+    double EvaluarExpresion() const;
 
     /** \brief M&eacute;todo que permite imprimir la expresi&oacute;n en su notaci&oacute;n polaca inversa.
      *
